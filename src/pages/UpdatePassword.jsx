@@ -40,7 +40,9 @@ const UpdatePassword = () => {
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
             Choose new Password
           </h1>
-          <p className="my-4 text-[1.125rem] leading-[1.625rem] text-richblack-100">Almost done. Enter your new password and youre all ser.</p>
+          <p className="my-4 text-[1.125rem] leading-[1.625rem] text-richblack-100">
+            Almost done. Enter your new password and youre all ser.
+          </p>
           <form onSubmit={handleOnSubmit}>
             {/* password label */}
             <label className="relative">
@@ -53,14 +55,17 @@ const UpdatePassword = () => {
                 name="password"
                 value={password}
                 onChange={handleOnChange}
-                  placeholder="Password"
-                  className="form-style w-full !pr-10"
+                placeholder="Password"
+                className="form-style w-full bg-richblack-800 h-12 p-3 rounded-md text-richblack-5"
               />
-              <span onClick={() => setShowPassword((prev) => !prev)}  className="absolute right-3 top-[38px] z-[10] cursor-pointer">
+              <span
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+              >
                 {showPassword ? (
-                  <AiOutlineEyeInvisible fontSize={24}  fill="#AFB2BF" />
+                  <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
                 ) : (
-                  <AiOutlineEye fontSize={24}  fill="#AFB2BF" />
+                  <AiOutlineEye fontSize={24} fill="#AFB2BF" />
                 )}
               </span>
             </label>
@@ -76,25 +81,28 @@ const UpdatePassword = () => {
                 value={confirmPassword}
                 onChange={handleOnChange}
                 placeholder="Confirm Password"
-                className="form-style w-full !pr-10"
+                className="form-style w-full bg-richblack-800 h-12 p-3 rounded-md text-richblack-5"
               />
-              <span onClick={() => setShowConfirmPassword((prev) => !prev)} className="absolute right-3 top-[38px] z-[10] cursor-pointer">
+              <span
+                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+              >
                 {showConfirmPassword ? (
                   <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
                 ) : (
                   <AiOutlineEye fontSize={24} fill="#AFB2BF" />
                 )}
               </span>
-              </label>
-              {/* reset password button */}
+            </label>
+            {/* reset password button */}
             <button
               type="submit"
               className="mt-6 w-full rounded-[8px] bg-yellow-50 py-[12px] px-[12px] font-medium text-richblack-900"
             >
               Reset Password
             </button>
-            </form>
-            {/* Back to login button */}
+          </form>
+          {/* Back to login button */}
           <div className="mt-6 flex items-center justify-between">
             <Link to="/login">
               <p className="flex items-center gap-x-2 text-richblack-5">
