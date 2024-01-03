@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../data/navbar-links";
@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 import ProfileDropDown from "../core/Auth/ProfileDropDown";
-import { apiConnector } from "../../services/apiconnector";
-import { categories } from "../../services/apis";
+// import { apiConnector } from "../../services/apiconnector";
+// import { categories } from "../../services/apis";
 
 const subLinks = [
   {
@@ -41,6 +41,7 @@ const Navbar = () => {
   //     const result = await apiConnector("GET", categories.CATEGORIES_API);
   //     console.log("Printing Sublinks Result: ", result);
   //     setSubLinks(result.data.data);
+  //     console.log("Printing SubLinks ", subLinks)
   //   } catch (error) {
   //     console.log("Could not fetch the category list")
   //   }
@@ -59,7 +60,7 @@ const Navbar = () => {
       <div className="w-11/12 flex max-w-maxContent items-center justify-between">
         {/* Image */}
         <Link to="/">
-          <img src={logo} width={160} height={42} loading="lazy" />
+          <img src={logo} width={160} height={42} loading="lazy" alt="logoImage" />
         </Link>
         {/* Navigation bar Links */}
         <nav>
@@ -106,7 +107,7 @@ const Navbar = () => {
 
         {/* Login/SignUp/Dashboard buttons */}
         <div className="flex gap-x-4 items-center">
-          {user && user?.accountType != "Instructor" && (
+          {user && user?.accountType !== "Instructor" && (
             <Link to="/dashboard/cart" className="relative">
               <AiOutlineShoppingCart />
               {totalItems > 0 && <span>{totalItems}</span>}
