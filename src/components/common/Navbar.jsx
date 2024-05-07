@@ -60,7 +60,13 @@ const Navbar = () => {
       <div className="w-11/12 flex max-w-maxContent items-center justify-between">
         {/* Image */}
         <Link to="/">
-          <img src={logo} width={160} height={42} loading="lazy" alt="logoImage" />
+          <img
+            src={logo}
+            width={160}
+            height={42}
+            loading="lazy"
+            alt="logoImage"
+          />
         </Link>
         {/* Navigation bar Links */}
         <nav>
@@ -75,8 +81,7 @@ const Navbar = () => {
                     <div className="invisible absolute left-[50%] top-[50%] flex flex-col rounded-md bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 lg:w-[300px] translate-x-[-50%] translate-y-[23%] z-10">
                       {/* small rotated rectangle pointing at catalog */}
                       <div className="absolute left-[50%] top-0 h-6 w-6 rotate-45 rounded bg-richblack-5 translate-x-[80%] translate-y-[-40%]"></div>
-                      {
-                        subLinks.length ? (
+                      {subLinks.length ? (
                         subLinks.map((subLink, index) => (
                           <Link to={`${subLink.link}`} key={index}>
                             <p>{subLink.title}</p>

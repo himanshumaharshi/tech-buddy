@@ -6,14 +6,27 @@ const { uploadImage } = require("../utils/imageUploader");
 exports.updateProfile = async (req, res) => {
   try {
     // fetch data
-    const { dateOfBirth = "", about = "", contactNumber, gender = "" } = req.body;
+    const {
+      firstName = "",
+      lastName = "",
+      dateOfBirth = "",
+      about = "",
+      contactNumber = "",
+      gender = "",
+    } = req.body;
 
     // get userId
     const id = req.user.id;
 
-    // find profile
+    // find profile by id
     const userDetails = await User.findById(id);
     const profile = await Profile.findById(userDetails.additionalDetails);
+
+    const user = await User.findByIdAndUpdate(id, {
+      firstName,
+      lastName,
+    });
+    await user.save();
 
     // Update the profile fields
     profile.dateOfBirth = dateOfBirth;
@@ -23,6 +36,11 @@ exports.updateProfile = async (req, res) => {
 
     // Save the updated profile
     await profile.save();
+
+    // find the updated user details
+    const updatedUserDetails = await User.findById(id)
+      .populate("additionalDetails")
+      .exec();
 
     // return success response
     return res.status(200).json({
@@ -68,7 +86,7 @@ exports.deleteAccount = async (req, res) => {
     // retrurn success response
     return res.status(200).json({
       success: true,
-      message: "Account Deleted Successfully"
+      message: "Account Deleted Successfully",
     });
   } catch (error) {
     console.log(error);
