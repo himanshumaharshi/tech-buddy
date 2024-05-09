@@ -64,8 +64,11 @@ exports.isStudent = async (req, res, next) => {
 // isInstructor
 exports.isInstructor = async (req, res, next) => {
   try {
+    const userDetails = await User.findOne({ email: req.user.email });
+    console.log("User Details from auth.js middleware isInstructor", userDetails)
+    console.log(userDetails.accountType)
     // fetch data from database
-    if (req.user.accountType !== "Instructor") {
+    if (userDetails.accountType !== "Instructor") {
       return res.status(401).json({
         success: false,
         message: "Wrong Account Type, this is a protected route for Instructor",
