@@ -45,7 +45,7 @@ const courseSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "user",
+      ref: "User",
     },
   ],
   instructions: {
@@ -55,6 +55,7 @@ const courseSchema = new mongoose.Schema({
     type: String,
     enum: ["Draft", "Published"],
   },
+  createdAt: { type: Date, degault: Date.now },
 });
 
 module.exports = mongoose.model("Course", courseSchema);

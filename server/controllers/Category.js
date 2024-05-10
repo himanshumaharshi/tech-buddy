@@ -1,89 +1,71 @@
 const Category = require("../models/Category");
+const mongoose = require("mongoose")
 
 function getRandomInt(max) {
-  return Math.floor(Math.random()*max)
+  return Math.floor(Math.random() * max);
 }
-
-// createCategorys
 exports.createCategory = async (req, res) => {
   try {
-    // fetch data
     const { name, description } = req.body;
-
-    // validation
     if (!name) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid name or description",
-      });
+      return res
+        .status(400)
+        .json({ success: false, message: "All fields are required" });
     }
-    
-    // create new entry in database
-    const categoryDetails = await Category.create({
+    const CategorysDetails = await Category.create({
       name: name,
       description: description,
     });
-    console.log(categoryDetails);
-
-    //   return success response
+    console.log(CategorysDetails);
     return res.status(200).json({
       success: true,
-      message: "Category created successfully",
+      message: "Categorys Created Successfully",
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
-      success: false,
-      message: "Something went wrong, cannot create Category",
+      success: true,
+      message: error.message,
     });
   }
 };
 
-// showAllCategories
 exports.showAllCategories = async (req, res) => {
   try {
-    // fetch Category
-    const allCategory = await Category.find(
-      {},
-      { name: true, description: true }
-    );
-
-    // return success response
-    return res.status(200).json({
+    const allCategorys = await Category.find();
+    res.status(200).json({
       success: true,
-      message: "All Categorys fetched successfully",
-      allCategory,
+      data: allCategorys,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       success: false,
-      message: "Something went wrong, cannot create Category",
+      message: error.message,
     });
   }
 };
 
-// category page details
 exports.categoryPageDetails = async (req, res) => {
   try {
-    // get categoryId
     const { categoryId } = req.body;
-
+    // const updatedCategoryId = new mongoose.Types.ObjectId(courseId);
     // Get courses for the specified category
     const selectedCategory = await Category.findById(categoryId)
-      .populate("courses")
+      .populate({
+        path: "courses",
+        match: { status: "Published" },
+        populate: "ratingAndReviews",
+      })
       .exec();
-    console.log(selectedCategory);
+
+    // console.log("SELECTED COURSE", selectedCategory)
 
     // Handle the case when the category is not found
     if (!selectedCategory) {
       console.log("Category not found.");
-      return res.status(404).json({
-        success: false,
-        message: "Category not found",
-      });
+      return res
+        .status(404)
+        .json({ success: false, message: "Category not found" });
     }
-
     // Handle the case when there are no courses
     if (selectedCategory.courses.length === 0) {
       console.log("No courses found for the selected category.");
@@ -93,21 +75,29 @@ exports.categoryPageDetails = async (req, res) => {
       });
     }
 
-    const selectedCourses = selectedCategory.courses;
-
     // Get courses for other categories
     const categoriesExceptSelected = await Category.find({
       _id: { $ne: categoryId },
-    })
-      .populate("courses")
+    });
+    let differentCategory = await Category.findOne(
+      categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]
+        ._id
+    )
+      .populate({
+        path: "courses",
+        match: { status: "Published" },
+      })
       .exec();
-    let differentCourses = [];
-    for (const category of categoriesExceptSelected) {
-      differentCourses.push(...category.courses);
-    }
-
     // Get top-selling courses across all categories
-    const allCategories = await Category.find().populate("courses");
+    const allCategories = await Category.find()
+      .populate({
+        path: "courses",
+        match: { status: "Published" },
+        populate: {
+          path: "instructor",
+        }
+      })
+      .exec();
     const allCourses = allCategories.flatMap((category) => category.courses);
     const mostSellingCourses = allCourses
       .sort((a, b) => b.sold - a.sold)
@@ -115,18 +105,18 @@ exports.categoryPageDetails = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: 'CoursePageDetails',
       data: {
-        selectedCourses: selectedCourses,
-        differentCourses: differentCourses,
-        mostSellingCourses: mostSellingCourses,
-      }
+        selectedCategory,
+        differentCategory,
+        mostSellingCourses,
+      },
     });
   } catch (error) {
-    console.error(error);
     return res.status(500).json({
       success: false,
-      message: "Error Getting category page details",
+      message:
+        "Unable to fetch catalog data using categoryPageDetails api from Category.js",
+      error: error.message,
     });
   }
 };

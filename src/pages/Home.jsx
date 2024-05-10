@@ -10,6 +10,7 @@ import LearningLanguageSection from "../components/core/HomePage/LearningLanguag
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import Footer from "../components/common/Footer";
 import ExploreMoreSection from "../components/core/HomePage/ExploreMoreSection";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const Home = () => {
   return (
@@ -41,7 +42,7 @@ const Home = () => {
           instructors.
         </div>
 
-        {/* CTSButtons {Learn More and Book a demo} */}
+        {/* CTA Buttons {Learn More and Book a demo} */}
         <div className="mt-8 flex flex-row gap-7">
           <CTAButton active={true} linkto={"/signup"}>
             Learn More
@@ -177,6 +178,7 @@ const Home = () => {
           Reviews from other Learners
         </h2>
         {/* review Slider */}
+        <ReviewSlider/>
       </div>
 
       {/* Footer */}
