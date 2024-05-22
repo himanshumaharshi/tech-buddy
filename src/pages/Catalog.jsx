@@ -7,6 +7,7 @@ import { getCatalogPageData } from "../services/operations/pageAndComponentData"
 import { useSelector } from "react-redux";
 import CourseCard from "../components/core/Catalog/CourseCard";
 import CourseSlider from "../components/core/Catalog/CourseSlider";
+import Error from "./Error"
 
 export default function Catalog() {
   const { loading } = useSelector((state) => state.profile);
@@ -31,7 +32,7 @@ export default function Catalog() {
     const getCategoryDetails = async () => {
       try {
         const response = await getCatalogPageData(categoryId);
-        // console.log("Printing response: ", response);
+        console.log("Printing response: ", response);
         setCatalogPageData(response);
       } catch (error) {
         console.log(error);
@@ -41,6 +42,17 @@ export default function Catalog() {
       getCategoryDetails();
     }
   }, [categoryId]);
+
+  if (loading || !catalogPageData) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+  if (!loading && !catalogPageData.success) {
+    return <Error />;
+  }
 
   return (
     <div>

@@ -5,7 +5,7 @@ import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import {
   addCourseDetails,
   editCourseDetails,
-  // fetchCourseCategories,
+  fetchCourseCategories,
 } from "../../../../../services/operations/courseDetailsAPI";
 import ChipInput from "./ChipInput";
 import Upload from "../Upload";
@@ -29,52 +29,21 @@ const CourseInformationForm = () => {
   const { token } = useSelector((state) => state.auth);
   const { course, editCourse } = useSelector((state) => state.course);
   const [loading, setLoading] = useState(false);
-  // const [courseCategories, setCourseCategories] = useState([]);
-
-  const categories = [
-    {
-      _id: "653b7537cc1a36954362f056",
-      name: "SDE",
-      description: "C++ is a Famous Programming Language",
-    },
-    {
-      _id: "653b7562cc1a36954362f05a",
-      name: "Android",
-      description: "Learn Android Development",
-    },
-    {
-      _id: "653b757ccc1a36954362f05c",
-      name: "DevOps",
-      description: "Become a Devops Developer",
-    },
-    {
-      _id: "653b7591cc1a36954362f05e",
-      name: "Web Development",
-      description: "Learn Web Development",
-    },
-    {
-      _id: "653b75a7cc1a36954362f060",
-      name: "LLL",
-      description: "Low Level Language",
-    },
-    {
-      _id: "653b75b5cc1a36954362f062",
-      name: "HLL",
-      description: "High Level Language",
-    },
-  ];
+  const [courseCategories, setCourseCategories] = useState([]);
 
   useEffect(() => {
-    // const getCategories = async () => {
-    //   setLoading(true);
-    //   const categories = await fetchCourseCategories();
-    //   console.log("Categories Data: ", categories);
-    //   if (categories.length > 0) {
-    //     console.log("Categories Data: ", categories);
-    //     setCourseCategories(categories);
-    //   }
-    //   setLoading(false);
-    // };
+    const getCategories = async () => {
+      setLoading(true)
+      const categories = await fetchCourseCategories()
+      // console.log("categories", categories)
+      // console.log("categories length", categories.length)
+      if (categories.length > 0) {
+        setCourseCategories(categories)
+      }
+      setLoading(false)
+    }
+
+    // if form is in edit mode
     if (editCourse) {
       setValue("courseTitle", course.courseName);
       setValue("courseShortDesc", course.courseDescription);
@@ -85,7 +54,9 @@ const CourseInformationForm = () => {
       setValue("courseRequirements", course.instructions);
       setValue("courseImage", course.thumbnail);
     }
-    // getCategories();
+
+    getCategories()
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -172,7 +143,7 @@ const CourseInformationForm = () => {
         const result = await editCourseDetails(formData, token);
         setLoading(false);
         if (result) {
-          dispatch(setStep(2));;
+          dispatch(setStep(2));
           dispatch(setCourse(result));
         }
       } else {
@@ -277,34 +248,7 @@ const CourseInformationForm = () => {
         )}
       </div>
 
-      {/* category dropdown */}
-      {/* <div className="flex flex-col space-y-2">
-        <label className="text-sm text-richblack-5" htmlFor="courseCategory">
-          Course Category <sup className="text-pink-200">*</sup>
-        </label>
-        <select
-          {...register("courseCategory", { required: true })}
-          defaultValue="SDE"
-          id="courseCategory"
-          className="form-style w-full"
-        >
-          <option value="SDE" disabled>
-            Choose a Category
-          </option>
-
-          {!loading &&
-            courseCategories?.map((category, index) => (
-              <option key={index} value={category?._id}>
-                {category?.name}
-              </option>
-            ))}
-        </select>
-        {errors.courseCategory && (
-          <span className="ml-2 text-xs tracking-wide text-pink-200">
-            Course Category is required
-          </span>
-        )}
-      </div> */}
+      {/* Course Category */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseCategory">
           Course Category <sup className="text-pink-200">*</sup>
@@ -318,11 +262,12 @@ const CourseInformationForm = () => {
           <option value="" disabled>
             Choose a Category
           </option>
-          {categories.map((category) => (
-            <option key={category._id} value={category._id}>
-              {category.name}
-            </option>
-          ))}
+          {!loading &&
+            courseCategories?.map((category, indx) => (
+              <option key={indx} value={category?._id}>
+                {category?.name}
+              </option>
+            ))}
         </select>
         {errors.courseCategory && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">

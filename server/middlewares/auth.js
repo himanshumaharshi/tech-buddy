@@ -44,20 +44,19 @@ exports.auth = async (req, res, next) => {
 // isStudent
 exports.isStudent = async (req, res, next) => {
   try {
-    // fetch data from database
-    if (req.user.accountType !== "Student") {
+    const userDetails = await User.findOne({ email: req.user.email });
+
+    if (userDetails.accountType !== "Student") {
       return res.status(401).json({
         success: false,
-        message: "Wrong Account Type, this is a protected route for Student",
+        message: "This is a Protected Route for Students",
       });
     }
     next();
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      success: false,
-      message: "Invalid Account Type: Not Student",
-    });
+    return res
+      .status(500)
+      .json({ success: false, message: `User Role Can't be Verified` });
   }
 };
 
@@ -65,41 +64,39 @@ exports.isStudent = async (req, res, next) => {
 exports.isInstructor = async (req, res, next) => {
   try {
     const userDetails = await User.findOne({ email: req.user.email });
-    console.log("User Details from auth.js middleware isInstructor", userDetails)
-    console.log(userDetails.accountType)
-    // fetch data from database
+    console.log(userDetails);
+
+    console.log(userDetails.accountType);
+
     if (userDetails.accountType !== "Instructor") {
       return res.status(401).json({
         success: false,
-        message: "Wrong Account Type, this is a protected route for Instructor",
+        message: "This is a Protected Route for Instructor",
       });
     }
     next();
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      success: false,
-      message: "Invalid Account Type: Not Instructor",
-    });
+    return res
+      .status(500)
+      .json({ success: false, message: `User Role Can't be Verified` });
   }
 };
 
 // isAdmin
 exports.isAdmin = async (req, res, next) => {
   try {
-    // fetch data from database
-    if (req.user.accountType !== "Admin") {
+    const userDetails = await User.findOne({ email: req.user.email });
+
+    if (userDetails.accountType !== "Admin") {
       return res.status(401).json({
         success: false,
-        message: "Wrong Account Type, this is a protected route for Admin",
+        message: "This is a Protected Route for Admin",
       });
     }
     next();
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      success: false,
-      message: "Invalid Account Type: Not Admin",
-    });
+    return res
+      .status(500)
+      .json({ success: false, message: `User Role Can't be Verified` });
   }
 };

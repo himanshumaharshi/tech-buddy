@@ -3,8 +3,17 @@ import RenderCartCourses from "./RenderCartCourses";
 import RenderTotalAmount from "./RenderTotalAmount";
 import { useSelector } from "react-redux";
 
-const Cart = () => {
-  const { total, totalItems } = useSelector((state) => state.auth);
+export default function Cart () {
+  const { total, totalItems } = useSelector((state) => state.cart);
+  const { paymentLoading } = useSelector((state) => state.course);
+
+  if (paymentLoading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -25,5 +34,3 @@ const Cart = () => {
     </>
   );
 };
-
-export default Cart;

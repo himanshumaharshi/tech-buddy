@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaStar } from "react-icons/fa";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import ReactStars from "react-rating-stars-component";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaStar } from "react-icons/fa";
 import { removeFromCart } from "../../../../slices/cartSlice";
+import { MdCurrencyRupee } from "react-icons/md";
+import GetAvgRating from "../../../../utils/avgRating";
 
 const RenderCartCourses = () => {
-  const cart = useSelector((state) => state.cart);
+  const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  const [avgReviewCount, setAvgReviewCount] = useState(0);
+
+  useEffect(() => {
+    const ratAndRev = cart.map((ratingAndReviews) => ratingAndReviews)
+    // console.log("result", ratAndRev)
+    const count = GetAvgRating(ratAndRev);
+    setAvgReviewCount(count);
+  }, [cart]);
 
   return (
     <div className="flex flex-1 flex-col">
-      {cart.map((course, index) => {
+      {cart.map((course, index) => (
         <div
           key={course._id}
           className={`flex w-full flex-wrap items-start justify-between gap-6 ${
@@ -26,13 +37,13 @@ const RenderCartCourses = () => {
             />
             <div className="flex flex-col space-y-1">
               <p className="text-lg font-medium text-richblack-5">
-                {course?.name}
+                {course?.courseName}
               </p>
               <p className="text-sm text-richblack-300">
                 {course?.category?.name}
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-yellow-5">4.8</span>
+                <span className="text-yellow-5">{avgReviewCount || 0}</span>
                 <ReactStars
                   count={5}
                   value={course?.ratingAndReviews?.length}
@@ -42,6 +53,9 @@ const RenderCartCourses = () => {
                   emtpyIcon={<FaStar />}
                   fullIcon={<FaStar />}
                 />
+                <span className="text-richblack-400">
+                  {course?.ratingAndReviews?.length} Ratings
+                </span>
                 <span className="text-richblack-400">
                   {course?.ratingAndReviews?.length} Ratings
                 </span>
@@ -57,11 +71,11 @@ const RenderCartCourses = () => {
               <span>Remove</span>
             </button>
             <p className="mb-6 text-3xl font-medium text-yellow-100">
-              ₹ {course?.price}
+              <MdCurrencyRupee /> {course?.price}
             </p>
           </div>
-        </div>;
-      })}
+        </div>
+      ))}
     </div>
   );
 };

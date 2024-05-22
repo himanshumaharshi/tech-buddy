@@ -75,7 +75,7 @@ exports.deleteAccount = async (req, res) => {
     for (const courseId of user.courses) {
       await Course.findByIdAndUpdate(
         courseId,
-        { $pull: { studentsEnroled: id } },
+        { $pull: { studentsEnrolled: id } },
         { new: true }
       )
     }
@@ -164,7 +164,9 @@ exports.getEnrolledCourses = async (req, res) => {
         },
       })
       .exec()
+    
     userDetails = userDetails.toObject()
+    
     var SubsectionLength = 0
     for (var i = 0; i < userDetails.courses.length; i++) {
       let totalDurationInSeconds = 0
