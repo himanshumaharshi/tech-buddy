@@ -57,25 +57,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server Listening on Port: ${PORT}`);
 });
-
-/*
--------------------- Installed Packages --------------------
-npm init -y
-npm i bcrypt
-npm i bcryptjs
-npm i cloudinary
-npm i cookie-parser
-npm i cors
-npm i crypto-random-string
-npm i dotenv
-npm i express
-npm i express-fileupload
-npm i jsonwebtoken
-npm i mongoose
-npm i node-scheduler
-npm i nodemailer
-npm i nodemon
-npm i otp-generator
-npm i razorpay
-
-*/

@@ -1,14 +1,14 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "tech-buddy-backend",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Himanshu Maharshi",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",

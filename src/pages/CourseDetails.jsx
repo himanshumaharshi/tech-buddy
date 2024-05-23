@@ -14,7 +14,7 @@ import CourseDetailsCard from "../components/core/Course/CourseDetailsCard";
 import { MdCurrencyRupee } from "react-icons/md";
 import Footer from "../components/common/Footer";
 import CourseAccordionBar from "../components/core/Course/CourseAccordionBar";
-import Markdown from 'https://esm.sh/react-markdown@9?bundle'
+import Markdown from "react-markdown";
 
 const CourseDetails = () => {
   const { user } = useSelector((state) => state.profile);
