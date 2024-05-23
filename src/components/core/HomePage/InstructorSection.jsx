@@ -7,7 +7,7 @@ import HigilightText from "./HigilightText";
 const InstructorSection = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-20 items-center">
-      <div className="flex flex-row gap-20 items-center">
+      <div className="flex flex-col sm:flex-row gap-20 items-center">
         {/* left */}
         <div className="lg:w-[50%]">
           <img

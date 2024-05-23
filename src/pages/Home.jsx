@@ -174,6 +174,9 @@ const Home = () => {
       {/* Section 3 */}
       <div className="relative mx-auto my-20 w-11/12 flex max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
         <InstructorSection />
+      </div>
+
+      <div className="relative hidden mx-auto my-20 w-11/12 sm:flex max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
         <h2 className="text-center text-4xl font-semibold mt-8">
           Reviews from other Learners
         </h2>

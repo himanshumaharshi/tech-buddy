@@ -114,13 +114,13 @@ const About = () => {
       <StatsComponent />
 
       {/* section 5 */}
-      <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
+      <section className="mx-auto mt-20 flex w-11/12 pb-2 max-w-maxContent flex-col justify-between gap-10 text-white">
         <LearningGrid />
         <ContactFormSection />
       </section>
 
       {/* section 6 */}
-      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+      <div className="relative hidden mx-auto my-20 sm:flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
         <h1 className="text-center text-4xl font-semibold mt-8">
           Reviews from other learners
         </h1>

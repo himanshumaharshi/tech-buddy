@@ -4,13 +4,13 @@ import { BsChevronDown } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import { MdOutlineCancel } from "react-icons/md";
-
 import logo from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../data/navbar-links";
 import { apiConnector } from "../../services/apiconnector";
 import { categories } from "../../services/apis";
 import { ACCOUNT_TYPE } from "../../utils/constants";
 import ProfileDropdown from "../core/Auth/ProfileDropDown";
+import "./navbar.css";
 
 const Navbar = () => {
   const { token } = useSelector((state) => state.auth);
@@ -54,10 +54,11 @@ const Navbar = () => {
         <Link to="/">
           <img
             src={logo}
-            width={160}
-            height={32}
+            // width={160}
+            // height={32}
             loading="lazy"
             alt="logoImage"
+            className="imgRes"
           />
         </Link>
         {/* Navigation bar Links */}
@@ -138,14 +139,14 @@ const Navbar = () => {
             )}
             {token === null && (
               <Link to="/login">
-                <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+                <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[6px] py-[4px] sm:px-[12px] sm:py-[8px] text-richblack-100 text-xs sm:text-base">
                   Log in
                 </button>
               </Link>
             )}
             {token === null && (
               <Link to="/signup">
-                <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+                <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[6px] py-[4px] sm:px-[12px] sm:py-[8px] text-richblack-100 text-xs sm:text-base">
                   Sign up
                 </button>
               </Link>
