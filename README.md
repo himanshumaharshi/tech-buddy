@@ -121,4 +121,4 @@ Distributed under the [MIT License](https://github.com/himanshumaharshi/tech-bud
 
 Himanshu Maharshi - [@LinkedIn_handle](https://www.linkedin.com/in/himanshumaharshi/) - himanshumaharshi45@gmail.com
 
-🔗 Project Link 🔗 [https://github.com/himanshumaharshi/mern-estate](https://github.com/himanshumaharshi/tech-buddy)
+🔗 Project Link 🔗 [https://github.com/himanshumaharshi/tech-buddy](https://github.com/himanshumaharshi/tech-buddy)
