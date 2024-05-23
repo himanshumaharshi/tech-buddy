@@ -90,7 +90,7 @@ const Home = () => {
             }}
             codeColor={"text-yellow-25"}
             codeblock={`<!DOCTYPE html>\n <html lang="en">\n<head>\n<title>This is myPage</title>\n</head>\n<body>\n<h1><a href="/">Header</a></h1>\n<nav> <a href="/one">One</a> <a href="/two">Two</a> <a href="/three">Three</a>\n</nav>\n</body>`}
-            backgroundGradient = {<div className="codeblock1 absolute"></div>}
+            backgroundGradient={<div className="codeblock1 absolute"></div>}
           />
         </div>
 
@@ -124,7 +124,7 @@ const Home = () => {
         </div>
 
         {/* ExploreMore Section */}
-        <ExploreMoreSection/>
+        <ExploreMoreSection />
       </div>
 
       {/* Section 2 */}
@@ -157,7 +157,7 @@ const Home = () => {
 
             <div className="flex flex-col gap-10 w-[40%] items-start">
               <div className="text-[16px]">
-                The modern StudyNotion dectates its own terms. Today, to be a
+                The modern Tech Buddy dectates its own terms. Today, to be a
                 competative specialist requires more than professional skills.
               </div>
               <CTAButton active={true} linkto={"/signup"}>
@@ -178,7 +178,7 @@ const Home = () => {
           Reviews from other Learners
         </h2>
         {/* review Slider */}
-        <ReviewSlider/>
+        <ReviewSlider />
       </div>
 
       {/* Footer */}

@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from "react"
-import ReactStars from "react-rating-stars-component"
+import React, { useEffect, useState } from "react";
+import ReactStars from "react-rating-stars-component";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react"
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css"
-import "swiper/css/free-mode"
-import "swiper/css/pagination"
-import "../../App.css"
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import "../../App.css";
 // Icons
-import { FaStar } from "react-icons/fa"
+import { FaStar } from "react-icons/fa";
 // Import required modules
-import { Autoplay, FreeMode, Pagination } from "swiper/modules"
+import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 
 // Get apiFunction and the endpoint
-import { apiConnector } from "../../services/apiconnector"
-import { ratingsEndpoints } from "../../services/apis"
+import { apiConnector } from "../../services/apiconnector";
+import { ratingsEndpoints } from "../../services/apis";
 
 function ReviewSlider() {
-  const [reviews, setReviews] = useState([])
-  const truncateWords = 15
+  const [reviews, setReviews] = useState([]);
+  const truncateWords = 15;
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       const { data } = await apiConnector(
         "GET",
         ratingsEndpoints.REVIEWS_DETAILS_API
-      )
+      );
       if (data?.success) {
-        setReviews(data?.data)
+        setReviews(data?.data);
       }
-    })()
-  }, [])
+    })();
+  }, []);
 
   // console.log(reviews)
 
   return (
-    <div className="text-white">
-      <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
+    <div className="text-white w-full">
+      <div className="my-[50px] h-[184px]max-w-maxContentTab lg:max-w-maxContent">
         <Swiper
           slidesPerView={4}
           spaceBetween={25}
@@ -95,13 +95,13 @@ function ReviewSlider() {
                   </div>
                 </div>
               </SwiperSlide>
-            )
+            );
           })}
           {/* <SwiperSlide>Slide 1</SwiperSlide> */}
         </Swiper>
       </div>
     </div>
-  )
+  );
 }
 
-export default ReviewSlider
+export default ReviewSlider;

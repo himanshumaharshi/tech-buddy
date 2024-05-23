@@ -74,7 +74,7 @@ export async function buyCourse(
       currency: orderResponse.data.data.currency,
       amount: `${orderResponse.data.data.amount}`,
       order_id: orderResponse.data.data.id,
-      name: "StudyNotion",
+      name: "Tech Buddy",
       description: "Thank you for Purchasing the Course.",
       image: rzpLogo,
       prefill: {
@@ -82,15 +82,19 @@ export async function buyCourse(
         email: user_details.email,
       },
       handler: function (response) {
-        sendPaymentSuccessEmail(response, orderResponse.data.data.amount, token)
-        verifyPayment({ ...response, courses }, token, navigate, dispatch)
+        sendPaymentSuccessEmail(
+          response,
+          orderResponse.data.data.amount,
+          token
+        );
+        verifyPayment({ ...response, courses }, token, navigate, dispatch);
       },
-    }
+    };
 
-    console.log("options", options)
+    console.log("options", options);
     const paymentObject = new window.Razorpay(options);
-    
-    console.log("here at projectobject", paymentObject)
+
+    console.log("here at projectobject", paymentObject);
     paymentObject.open();
     paymentObject.on("payment.failed", function (response) {
       toast.error("Oops! Payment Failed.");

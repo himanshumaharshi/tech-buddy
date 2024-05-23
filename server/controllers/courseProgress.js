@@ -5,12 +5,12 @@ const CourseProgress = require("../models/CourseProgress")
 const Course = require("../models/Course")
 
 exports.updateCourseProgress = async (req, res) => {
-  const { courseId, subsectionId } = req.body
+  const { courseId, subSectionId } = req.body
   const userId = req.user.id
 
   try {
     // Check if the subsection is valid
-    const subsection = await SubSection.findById(subsectionId)
+    const subsection = await SubSection.findById(subSectionId)
     if (!subsection) {
       return res.status(404).json({ error: "Invalid subsection" })
     }
@@ -29,12 +29,12 @@ exports.updateCourseProgress = async (req, res) => {
       })
     } else {
       // If course progress exists, check if the subsection is already completed
-      if (courseProgress.completedVideos.includes(subsectionId)) {
+      if (courseProgress.completedVideos.includes(subSectionId)) {
         return res.status(400).json({ error: "Subsection already completed" })
       }
 
       // Push the subsection into the completedVideos array
-      courseProgress.completedVideos.push(subsectionId)
+      courseProgress.completedVideos.push(subSectionId)
     }
 
     // Save the updated course progress

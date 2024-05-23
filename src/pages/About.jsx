@@ -9,6 +9,7 @@ import StatsComponent from "../components/core/AboutPage/Stats";
 import LearningGrid from "../components/core/AboutPage/LearningGrid";
 import ContactFormSection from "../components/core/AboutPage/ContactFormSection";
 import Footer from "../components/common/Footer";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const About = () => {
   return (
@@ -20,7 +21,7 @@ const About = () => {
             Driving Innovation in Online Education for a{" "}
             <HigilightText text={"Brighter Future"} />
             <p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]">
-              StydyNotionn is at the forefront of driving innovation in online
+              Tech Buddy is at the forefront of driving innovation in online
               education. We're passionate about creating a briter future by
               offering cutting-edge courses, leveraging emerging technologies,
               and nurturing a vibrant learning community.
@@ -124,6 +125,7 @@ const About = () => {
           Reviews from other learners
         </h1>
         {/* <ReviewSlider/> */}
+        <ReviewSlider />
       </div>
 
       {/* section 7 */}

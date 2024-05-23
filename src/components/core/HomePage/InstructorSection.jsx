@@ -25,8 +25,8 @@ const InstructorSection = () => {
           </div>
 
           <p className="font-medium text-[16px] text-justify w-[90%] text-richblack-300">
-            Instructors from around the world tech millions of students on
-            StudyNotion. We provide tools and skills to tech what you love.
+            Instructors from around the world tech millions of students on Tech
+            Buddy. We provide tools and skills to tech what you love.
           </p>
 
           <div className="w-fit">
