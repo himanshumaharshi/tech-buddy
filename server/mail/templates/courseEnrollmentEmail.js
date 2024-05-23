@@ -67,7 +67,7 @@ exports.courseEnrollmentEmail = (courseName, name) => {
     
     <body>
         <div class="container">
-            <a href="https://tech-buddy-edtech.vercel.app/"><img class="logo" src="https://ibb.co/vmZBPc9"
+            <a href="https://tech-buddy-edtech.vercel.app/"><img class="logo" src="https://i.ibb.co/SmM7Sv2/mail-logo.png"
                     alt="Tech Buddy Logo"></a>
             <div class="message">Course Registration Confirmation</div>
             <div class="body">
