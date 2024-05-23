@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import rzpLogo from "../../assets/Logo/rzp_logo.png";
+import rzpLogo from "../../assets/Logo/main-logo.png";
 import { studentEndpoints } from "../apis";
 import { apiConnector } from "../apiconnector";
 import { setPaymentLoading } from "../../slices/courseSlice";
