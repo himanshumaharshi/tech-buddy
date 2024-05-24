@@ -4,7 +4,7 @@
 <img src="https://socialify.git.ci/himanshumaharshi/tech-buddy/image?font=Raleway&language=1&logo=https%3A%2F%2Fi.ibb.co%2FrFqhM9H%2FLogo-Small-Dark.png&name=1&owner=1&stargazers=1&theme=Light" alt="tech-buddy" width="640" height="320" />
 
 <h1>Tech Buddy <a href=https://tech-buddy-edtech.vercel.app>🔗</a> </h1>
-<p>Tech Buddy is a modern, feature-rich web application built on the MERN stack (MongoDB, Express.js, React.js, Node.js). It provides a robust platform for managing real estate properties efficiently. With seamless integration of technologies like Redux for state management, Firebase for authentication, and JWT and bcrypt for encryption, Real-Estate ensures security and scalability.</p>
+<p>Tech Buddy is a comprehensive platform where instructors can effortlessly create and list their courses, and students can easily find and purchase the courses they desire. It features secure account setup with email OTP verification, enhanced password encryption using Bcrypt, end-to-end encrypted payments with SHA-256, and seamless payment processing with Razorpay. Users can give ratings and reviews to help others make informed decisions, and the fully responsive design ensures flawless functionality on any screen size.</p>
 
 <h4> <a href=https://tech-buddy-edtech.vercel.app>🌐 View Demo</a> <span> · </span> <a href="https://github.com/himanshumaharshi/tech-buddy/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/himanshumaharshi/tech-buddy/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/himanshumaharshi/mern-estate/issues"> Request Feature </a> </h4>
 
