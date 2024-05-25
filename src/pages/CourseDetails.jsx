@@ -15,6 +15,8 @@ import { MdCurrencyRupee } from "react-icons/md";
 import Footer from "../components/common/Footer";
 import CourseAccordionBar from "../components/core/Course/CourseAccordionBar";
 import Markdown from "react-markdown";
+import { ACCOUNT_TYPE } from "../utils/constants";
+import toast from "react-hot-toast";
 
 const CourseDetails = () => {
   const { user } = useSelector((state) => state.profile);
@@ -82,6 +84,14 @@ const CourseDetails = () => {
   }
 
   const handleBuyCourse = () => {
+    if (user && user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+      toast.error("You are an Instructor. You can't buy a course.");
+      return;
+    }
+    if (user && user?.accountType === ACCOUNT_TYPE.ADMIN) {
+      toast.error("You are an Admin. You can't buy a course.");
+      return;
+    }
     if (token) {
       buyCourse(token, [courseId], user, navigate, dispatch);
       return;

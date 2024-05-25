@@ -27,6 +27,7 @@ import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Instructor from "./components/core/Dashboard/Instructor";
+import AdminDashboard from "./components/core/Dashboard/AdminDashboard";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -91,12 +92,12 @@ function App() {
           }
         >
           {/* route for all users */}
-          <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/settings" element={<Settings />} />
 
           {/* route only for students */}
           {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
+              <Route path="dashboard/my-profile" element={<MyProfile />} />
               <Route
                 path="dashboard/enrolled-courses"
                 element={<EnrolledCourses />}
@@ -105,9 +106,10 @@ function App() {
             </>
           )}
 
-          {/* route only for students */}
+          {/* route only for instructors */}
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
+              <Route path="dashboard/my-profile" element={<MyProfile />} />
               <Route path="dashboard/instructor" element={<Instructor />} />
               <Route path="dashboard/my-courses" element={<MyCourses />} />
               <Route path="dashboard/add-course" element={<AddCourse />} />
@@ -115,6 +117,14 @@ function App() {
                 path="dashboard/edit-course/:courseId"
                 element={<EditCourse />}
               />
+            </>
+          )}
+
+          {/* route only for admin */}
+          {user?.accountType === ACCOUNT_TYPE.ADMIN && (
+            <>
+              <Route path="dashboard/my-profile" element={<MyProfile />} />
+              <Route path="dashboard/admin" element={<AdminDashboard />} />
             </>
           )}
         </Route>

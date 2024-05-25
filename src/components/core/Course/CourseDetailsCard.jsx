@@ -27,6 +27,10 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
       toast.error("You are an Instructor. You can't buy a course.");
       return;
     }
+    if (user && user?.accountType === ACCOUNT_TYPE.ADMIN) {
+      toast.error("You are an Admin. You can't buy a course.");
+      return;
+    }
     if (token) {
       dispatch(addToCart(course));
       return;

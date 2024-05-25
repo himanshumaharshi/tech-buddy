@@ -16,10 +16,11 @@ exports.createCategory = async (req, res) => {
       name: name,
       description: description,
     });
-    console.log(CategorysDetails);
+    console.log("new category",CategorysDetails);
     return res.status(200).json({
       success: true,
       message: "Categorys Created Successfully",
+      data: CategorysDetails
     });
   } catch (error) {
     return res.status(500).json({

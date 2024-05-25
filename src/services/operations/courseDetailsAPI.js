@@ -3,7 +3,9 @@ import { toast } from "react-hot-toast";
 // import { updateCompletedLectures } from "../../slices/viewCourseSlice"
 // import { setLoading } from "../../slices/profileSlice";
 import { apiConnector } from "../apiconnector";
-import { courseEndpoints } from "../apis";
+import { courseEndpoints, categories } from "../apis";
+
+const { CREATE_CATEGORY } = categories;
 
 const {
   COURSE_DETAILS_API,
@@ -383,6 +385,32 @@ export const createRating = async (data, token) => {
   } catch (error) {
     success = false;
     console.log("CREATE RATING API ERROR............", error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return success;
+};
+
+//create category api
+export const createCategory = async (data, token) => {
+  const toastId = toast.loading("Loading...");
+  console.log("data:", data);
+  let success = false;
+  try {
+    const response = await apiConnector("POST", CREATE_CATEGORY, data, {
+      Authorization: `Bearer ${token}`,
+    });
+    console.log("response", response);
+    console.log("here");
+    console.log("CREATE CATEGORY API RESPONSE............", response);
+    if (!response?.data?.success) {
+      throw new Error("Could Not Create Category");
+    }
+    toast.success("Category Created");
+    success = true;
+  } catch (error) {
+    success = false;
+    console.log("CREATE CATEGORY API ERROR............", error);
     toast.error(error.message);
   }
   toast.dismiss(toastId);

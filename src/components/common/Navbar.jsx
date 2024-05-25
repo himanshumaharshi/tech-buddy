@@ -127,16 +127,18 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           {/* Login/SignUp/Dashboard buttons */}
           <div className="items-center gap-x-4 flex">
-            {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
-              <Link to="/dashboard/cart" className="relative">
-                <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
-                {totalItems > 0 && (
-                  <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
-                    {totalItems}
-                  </span>
-                )}
-              </Link>
-            )}
+            {user &&
+              user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR &&
+              user?.accountType !== ACCOUNT_TYPE.ADMIN && (
+                <Link to="/dashboard/cart" className="relative">
+                  <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+                  {totalItems > 0 && (
+                    <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                      {totalItems}
+                    </span>
+                  )}
+                </Link>
+              )}
             {token === null && (
               <Link to="/login">
                 <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[6px] py-[4px] sm:px-[12px] sm:py-[8px] text-richblack-100 text-xs sm:text-base">
