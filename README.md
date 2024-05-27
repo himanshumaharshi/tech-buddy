@@ -1,6 +1,5 @@
 <div align='center'>
-<!-- ![mern-estate](https://socialify.git.ci/himanshumaharshi/mern-estate/image?language=1&owner=1&name=1&stargazers=1&theme=Light) -->
-<!-- <img src=https://socialify.git.ci/himanshumaharshi/mern-estate/image?font=Source%20Code%20Pro&language=1&name=1&owner=1&pattern=Plus&theme=Light alt="logo" width=300 height=150 /> -->
+  
 <img src="https://socialify.git.ci/himanshumaharshi/tech-buddy/image?font=Raleway&language=1&logo=https%3A%2F%2Fi.ibb.co%2FrFqhM9H%2FLogo-Small-Dark.png&name=1&owner=1&stargazers=1&theme=Light" alt="tech-buddy" width="640" height="320" />
 
 <h1>Tech Buddy <a href=https://tech-buddy-edtech.vercel.app>🔗</a> </h1>
@@ -21,8 +20,8 @@
 ## :star2: About the Project
 
 ### :camera: Screenshots
-<div align="center"> <a href="https://mern-estate-qtff.onrender.com/"><img src="https://github.com/himanshumaharshi/tech-buddy/blob/56aafe56bc45ff302c7a178d200be927619721fa/src/assets/Screenshots/Screenshot%20(38).png" alt='image' width='800'/></a> </div>
-<div align="center"> <a href="https://mern-estate-qtff.onrender.com/"><img src="https://github.com/himanshumaharshi/tech-buddy/blob/56aafe56bc45ff302c7a178d200be927619721fa/src/assets/Screenshots/Screenshot%20(40).png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://tech-buddy-edtech.vercel.app"><img src="https://github.com/himanshumaharshi/tech-buddy/blob/56aafe56bc45ff302c7a178d200be927619721fa/src/assets/Screenshots/Screenshot%20(38).png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href="https://tech-buddy-edtech.vercel.app"><img src="https://github.com/himanshumaharshi/tech-buddy/blob/56aafe56bc45ff302c7a178d200be927619721fa/src/assets/Screenshots/Screenshot%20(40).png" alt='image' width='800'/></a> </div>
 
 
 ### :space_invader: Tech Stack
