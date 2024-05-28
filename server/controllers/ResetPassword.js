@@ -31,7 +31,7 @@ exports.resetPasswordToken = async (req, res) => {
     console.log("DETAILS: ", updatedDatails);
 
     // create url link for frontend to reset password
-    const url = `http://localhost:3000/update-password/${token}`;
+    const url = `https://tech-buddy-edtech.vercel.app/update-password/${token}`;
 
     // send email containing the url
     await mailSender(
